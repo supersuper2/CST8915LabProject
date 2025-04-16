@@ -80,7 +80,7 @@ spec:
             - name: ORDER_QUEUE_USERNAME
               value: "sender"
             - name: ORDER_QUEUE_PASSWORD
-              value: "pXjF/5Sl8Wf98Zk25LqipnxmZyCKv7pX1+ASbAZ0Z+s="
+              value: ""
             - name: ORDER_QUEUE_NAME
               value: "orders"
             - name: FASTIFY_ADDRESS
@@ -161,7 +161,7 @@ spec:
             - name: ORDER_QUEUE_USERNAME
               value: "listener"
             - name: ORDER_QUEUE_PASSWORD
-              value: "pK/ClU4PB2NW1mulvv0MJ6S6sOr0M0G2d+ASbKa5jDY="
+              value: ""
             - name: ORDER_QUEUE_NAME
               value: "orders"
             - name: ORDER_DB_URI
@@ -443,9 +443,9 @@ spec:
             - name: AZURE_OPENAI_DEPLOYMENT_NAME # required if using Azure OpenAI
               value: "gpt-4"
             - name: AZURE_OPENAI_ENDPOINT # required if using Azure OpenAI
-              value: "https://sing1-m9k1lcmp-swedencentral.cognitiveservices.azure.com/"
+              value: ""
             - name: AZURE_OPENAI_DALLE_ENDPOINT
-              value: "https://sing1-m9k1lcmp-swedencentral.cognitiveservices.azure.com/"
+              value: ""
             - name: AZURE_OPENAI_DALLE_DEPLOYMENT_NAME
               value: "dall-e-3"
             - name: OPENAI_API_KEY # always required
