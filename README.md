@@ -6,17 +6,17 @@
 
 ## Application and Architecture Explanation
 
-Customers visit the store-front to view products and make purchases, store front fetch product information from product-service and present to customers. After customer confirm their order, store-front will send the order information to order-service, and order-service will encrypt it and pass it to Azure Service Bus. Then makeline-service will listen to the messages in Azure Service Bus and put the latest message into mongodb. Store-admin service grabs order data via makeline-service from mongodb, and it also leverages ai-service to generate new product's description (gpt-4) and product images (dall-e-3).
+Customers browse products and make purchases through the store-front application. The store-front retrieves product details from the product-service and displays them to users. Once an order is confirmed, the store-front sends the order information to the order-service, which encrypts the data and publishes it to Azure Service Bus. The makeline-service listens for messages on the Service Bus and stores the latest order in MongoDB. The order-service will send messages via the Service Bus. The store-admin service accesses this order data via the makeline-service and also utilizes the ai-service to generate product descriptions using gpt-4 and create product images with dall-e-3.
 
 ## Deployment Instructions
 
 ## Step 1: Clone the BestBuy Demo Repository
 
-  all-in-one-rabbitmq.yaml is for the application version with Rabbitmq
+  aps-all-in-one.yaml is for the application version that includes the connection to the service bus
   
-  secrets.yaml stores the Azure Openai Service key
+  secrets.yaml stores the Openai Service key
   
-  config-maps.yaml stores the configuration for Rabbitmq plugins.
+  config-maps.yaml stores the configuration
   
 ## Step 2: Create an Azure Kubernetes Cluster (AKS)
 
@@ -35,9 +35,9 @@ Customers visit the store-front to view products and make purchases, store front
    - Click **Create** and select **Kubernetes cluster**
    - In the `Basics` tap fill in the following details:
      - **Subscription**: Select your subscription.
-     - **Resource group**: Choose the one just created.
+     - **Resource group**: Choose the one that you just created.
      - **Cluster preset configuration**: Choose `Dev/Test`.
-     - **Region**: Same as your resource group (e.g., `Canada`).
+     - **Region**: Same as your resource group (e.g., `Canada Central`).
      - **Availability zones**: `None`.
      - **AKS pricing tier**: `Free`.
      - **Kubernetes version**: `Default`.
@@ -112,11 +112,11 @@ To enable AI-generated product descriptions and image generation features, you w
    - Navigate to the Azure OpenAI resource you just created.
 2. **Deploy GPT-4**:
    - Go to the **Model Deployments** section and click **Add Deployment**.
-   - Choose **GPT-4** as the model and provide a deployment name (e.g., `gpt-4-deployment`).
+   - Choose **GPT-4** as the model and provide a deployment name (e.g., `gpt-4`).
    - Set the deployment configuration as required and deploy the model.
 3. **Deploy DALL-E 3**:
    - Repeat the same process to deploy **DALL-E 3**.
-   - Use a descriptive deployment name (e.g., `dalle-3-deployment`).
+   - Use a descriptive deployment name (e.g., `dalle-3`).
 4. **Note Configuration Details**:
    - Once deployed, note down the following details for each model:
      - Deployment Name
@@ -165,13 +165,13 @@ To enable AI-generated product descriptions and image generation features, you w
    - name: AZURE_OPENAI_API_VERSION
      value: "2024-07-01-preview"
    - name: AZURE_OPENAI_DEPLOYMENT_NAME
-     value: "gpt-4-deployment"
+     value: "gpt-4"
    - name: AZURE_OPENAI_ENDPOINT
      value: "https://<your-openai-resource-name>.openai.azure.com/"
    - name: AZURE_OPENAI_DALLE_ENDPOINT
      value: "https://<your-openai-resource-name>.openai.azure.com/"
    - name: AZURE_OPENAI_DALLE_DEPLOYMENT_NAME
-     value: "dalle-3-deployment"
+     value: "dalle-3"
    ```
 
 ## Step 4: Deploy the Secrets
@@ -181,7 +181,7 @@ To enable AI-generated product descriptions and image generation features, you w
   - Make sure that you have replaced Base64-encoded-API-KEY in secrets.yaml with your Base64-encoded OpenAI API key.
 
   ```
-  kubectl apply -f secrets-openai.yaml
+  kubectl apply -f secrets.yaml
   ```
 
 - Verify:
@@ -195,14 +195,14 @@ To enable AI-generated product descriptions and image generation features, you w
 
 1. **Apply the YAML file to the AKS cluster:**
 
-   - In this step, use the K8s deployment YAML file provided: `all-in-one.yaml`.
+   - In this step, use the K8s deployment YAML file provided: `aps-all-in-one.yaml`.
 
    - Open the terminal and navigate to the file directory.
 
    - Run the following command to apply the YAML configuration and deploy the application to AKS:
 
      ```
-     kubectl apply -f all-in-one.yaml
+     kubectl apply -f aps-all-in-one.yaml
      ```
 
 2. **Verify the deployment:**
@@ -248,3 +248,7 @@ To enable AI-generated product descriptions and image generation features, you w
 | Virtual-Customer | `https://hub.docker.com/r/sing1883/virtual-customer-a2` |
 | Ai-Service       | `https://hub.docker.com/r/sing1883/ai-service-a2` |
 | Makeline-Service | `https://hub.docker.com/r/sing1883/makeline-service-a2` |
+
+## Demo Video
+
+
