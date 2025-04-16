@@ -2,6 +2,8 @@
 
 ## Application Architecture
 
+![cst8915final2 drawio](https://github.com/user-attachments/assets/70a436f1-dc39-49a1-9d68-7effe449fb2d)
+
 ## Application and Architecture Explanation
 
 ## Deployment Instructions
