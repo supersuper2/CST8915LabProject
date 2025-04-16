@@ -250,5 +250,16 @@ To enable AI-generated product descriptions and image generation features, you w
 | Makeline-Service | `https://hub.docker.com/r/sing1883/makeline-service-a2` |
 
 ## Demo Video
+https://youtu.be/KxmestPgGY8
+
+##Limitations and Issues 
+
+
+
+
+
+
+
+
 
 
