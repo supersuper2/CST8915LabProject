@@ -252,7 +252,15 @@ To enable AI-generated product descriptions and image generation features, you w
 ## Demo Video
 https://youtu.be/KxmestPgGY8
 
-##Limitations and Issues 
+## Limitations and Issues 
+1. The first limitation that had occured was the I creating the azure openAI service I was already "Insufficient quota", Which meant I was unable to use the AI services. To get around this, I had just changed the region to East US 2, and everything seemed to be working again.
+
+![errorcst8915](https://github.com/user-attachments/assets/b1fd1ba8-aa84-4664-b009-f5a41e1b1f43)
+
+2. The second issue that had occured was that the product description was not showing up. The page had shown an error, but when I was looking at the logs, there was no error. But when generating the product image, I was successful in doing so, so this leads me to believe that either something in the backend/frontend was not programmed properly or that a problem from the azures side, since the product image was generate. Inputting the AI services keys and endpoints, much have been done correctly. However the product description was not generated.
+
+![issue2](https://github.com/user-attachments/assets/e7be4cab-ae6d-46c6-a1f9-42af5f92a2a3)
+
 
 
 
