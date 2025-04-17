@@ -116,7 +116,7 @@ To enable AI-generated product descriptions and image generation features, you w
    - Set the deployment configuration as required and deploy the model.
 3. **Deploy DALL-E 3**:
    - Repeat the same process to deploy **DALL-E 3**.
-   - Use a descriptive deployment name (e.g., `dalle-3`).
+   - Use a descriptive deployment name (e.g., `dall-e-3`).
 4. **Note Configuration Details**:
    - Once deployed, note down the following details for each model:
      - Deployment Name
@@ -171,7 +171,7 @@ To enable AI-generated product descriptions and image generation features, you w
    - name: AZURE_OPENAI_DALLE_ENDPOINT
      value: "https://<your-openai-resource-name>.openai.azure.com/"
    - name: AZURE_OPENAI_DALLE_DEPLOYMENT_NAME
-     value: "dalle-3"
+     value: "dall-e-3"
    ```
 
 ## Step 4: Deploy the Secrets
